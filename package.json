@@ -1,7 +1,7 @@
 {
   "name": "react-scrollwatch",
   "version": "1.0.0",
-  "description": "react-scrollwatch React component",
+  "description": "React higher order component (HOC) for reacting to when a component comes into view",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -25,13 +25,19 @@
   "devDependencies": {
     "nwb": "0.16.x",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "sanitize.css": "^5.0.0",
+    "styled-components": "^2.0.0"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Joshua Purcell <vuldin@gmail.com>",
+  "homepage": "https://github.com/vuldin/react-scrollwatch",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/vuldin/react-scrollwatch.git",
   "keywords": [
+    "react",
+    "component",
+    "hoc",
+    "scroll",
     "react-component"
   ]
 }
