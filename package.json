@@ -26,6 +26,7 @@
     "nwb": "0.16.x",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-fontawesome": "^1.6.1",
     "sanitize.css": "^5.0.0",
     "styled-components": "^2.0.0"
   },

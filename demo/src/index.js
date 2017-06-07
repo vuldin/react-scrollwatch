@@ -1,7 +1,24 @@
 import React, { Component } from 'react'
 import {render} from 'react-dom'
 import styled, { injectGlobal } from 'styled-components'
+import FontAwesome from 'react-fontawesome'
 import 'sanitize.css'
+
+const colors = {
+  offwhite: '#f5f5f6',
+  primary: {
+    normal: '#f57f17',
+    light: '#ffb04c',
+    dark: '#bc5100',
+    text: '#000000',
+  },
+  secondary: {
+    normal: '#81d4fa',
+    light: '#b6ffff',
+    dark: '#4ba3c7',
+    text: '#000000',
+  },
+}
 
 import withScrollWatch from '../../src'
 
@@ -12,45 +29,45 @@ const Content = ({ ...props }) => {
 const ContentWithScrollWatch = withScrollWatch(Content)
 
 class Demo extends Component {
-  constructor() {
-    super()
-    this.origBackground
-  }
   onShown(style) {
-    style.background = 'red'
+    style.background = colors.secondary.dark
     return style
   }
   onHidden(style) {
-    style.background = '#272b35'
+    style.background = colors.secondary.light
     return style
   }
   render() {
     return <Wrapper>
-      <Title>{`Scrollwatch`}</Title>
+      <Title>{`react-scrollwatch`}</Title>
       <Instructions>
         <span>{`Scrolling down until you begin to see a `}</span>
-        <SpanStyled>{`different colored`}</SpanStyled>
-        <span>{` element. Scrolling the div fully into view will change its color.`}</span>
+        <SpanLight>{`different colored`}</SpanLight>
+        <span>{` element. Scrolling the div fully into view will`}</span>
+        <SpanDark>{` change its color`}</SpanDark>
+        <span>{`.`}</span>
       </Instructions>
-      <Filler/>
+      <Filler height={1200}/>
       <ContentWithScrollWatch
         height={'390px'}
-        background={'#272b35'}
+        background={colors.secondary.light}
         shownPercent={'50%'}
         throttle={200}
         onShown={this.onShown}
         onHidden={this.onHidden}
       />
-      <Filler/>
+      <Filler height={1000}/>
+      <Instructions>
+        <span>{`See the `}</span>
+        <a href={'https://github.com/vuldin/react-scrollwatch'}><FontAwesome name='github-alt' />github repo</a>
+        <span>{` for details.`}</span>
+      </Instructions>
     </Wrapper>
   }
 }
 
 injectGlobal`
-  @font-face {
-    font-family: 'Trade Winds'
-    src: url('https://fonts.googleapis.com/css?family=Trade+Winds:400');
-  }
+  @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
   @font-face {
     font-family: 'Roboto Slab'
     src: url('https://fonts.googleapis.com/css?family=Roboto+Slab:400');
@@ -59,27 +76,31 @@ injectGlobal`
     font-family: 'Roboto Slab', serif;
     font-size: 24px;
     letter-spacing: 1px;
-    background: #393f4c;
-    color: #c5c8cb;
+    background: ${colors.offwhite};
+    color: ${colors.primary.text};
     text-align: center;
   }
 `
 const Wrapper = styled.div``
 const Title = styled.h1`
+  margin: 0;
   letter-spacing: 4px;
-  font-family: 'Trade Winds', cursive;
   font-size: 5em;
-  background: white;
-  color: #db0100;
+  background: ${colors.secondary.dark};
 `
 const Instructions = styled.div`
-  padding: 0px 10px 0px 10px;
+  background: ${colors.primary.normal};
+  padding: 15px;
 `
 const Filler = styled.div`
-  height: 1200px;
+  height: ${props => props.height}px;
 `
-const SpanStyled = styled.span`
-  background: #272b35;
+const SpanLight = styled.span`
+  background: ${colors.secondary.light};
+  padding: 5px;
+`
+const SpanDark = styled.span`
+  background: ${colors.secondary.dark};
   padding: 5px;
 `
 

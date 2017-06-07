@@ -5,7 +5,7 @@
 [![Coveralls][coveralls-badge]][coveralls]
 
 ## Motivation
-There are a couple of existing libraries for handling scroll events: [scrollwatch](https://github.com/edull24/ScrollWatch) and [react-scroll](https://github.com/fisshy/react-scroll).
+There are a couple of existing libraries for handling scroll events: [scrollwatch](https://github.com/edull24/ScrollWatch) and [react-component-visibility](https://github.com/Pomax/react-component-visibility).
 However neither of these worked well in modern [react](https://facebook.github.io/react/) projects.
 
 `react-scrollwatch` is a simple higher order component (HOC) that makes reacting to when a components shows up in the viewport.
@@ -20,10 +20,13 @@ npm i -S react-scrollwatch
 ```
 
 ## Usage
-Run the example to see this component in action
+`react-scrollwatch` relies on [nwb](https://github.com/insin/nwb).
+This is mainly for packaging into various types of npm-ready modules (compatible with UMD, CommonJS, ES5, and ES6).
+Run the example to see this component in action:
 ```bash
 git clone https://github.com/vuldin/react-scrollwatch.git
 cd react-scollwatch
+npm i -g nwb
 npm i
 npm start
 ```
@@ -41,7 +44,7 @@ All properties are optional.
 - *style properties* (default: none): Pass any css styles you wish as properties to this higher order component... they will be applied as inline styled to the wrapped component.
 
 # Guidelines
-- *This HOC must wrap a React component.* Normal elements will not due.
+- *This HOC must wrap a React component.* Normal elements will result in an error.
 
 ## Testing
 While testing is built in to this project (thanks to [nwb](https://github.com/insin/nwb)!) I have not yet created tests. *Check back later!*
